@@ -1,8 +1,10 @@
 body {
     background-color: #eaeaea;
+    height: 100%;
 }
 #wrapper {
-    width: 1000px;
+    width: 970px;
+    height: 100vh;
     margin: 0px auto;
     padding: 10px;
     background-color: white;
@@ -39,15 +41,17 @@ p {
 /* MOVIE SEARCH */
 #searchBox, #randomMovie {
     display: block;
+    width: 100%;
     background-color: #2e2e2e;
     color: white;
     text-align: center;
     padding: 15px;
+    box-sizing: border-box;
 }
 #movieResults {
     display: inline-block;
     padding-right: 10px;
-    width: 66.36%;
+    width: 66.2%;
     margin-left: 10px;
     vertical-align: top;
 }
@@ -59,10 +63,12 @@ p {
     padding-right: 10px;
     width: 30%;
     vertical-align: top;
+    margin: 2px 0px;
 }
 #movieSite {
     display: block;
     margin-top: 20px;
+    margin-bottom: 5px;
     background-color: #2e2e2e;
     color: white;
     width: 200px;
