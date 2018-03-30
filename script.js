@@ -56,8 +56,43 @@ $(document).ready(function(){
         console.log(res1.Search[0].Title);
             ($.get('http://www.omdbapi.com/?apikey=845b8a53&t="'+res1.Search[Math.floor((Math.random() * 10))].Title+'"', function(res) {
             console.log(res);
-            $('#movieResults').html('<h1>'+res.Title+'</h1><h2><span style="font-weight: bold">Released:</span> '+res.Released+'</h2><h2><span style="font-weight: bold">Runtime:</span> '+res.Runtime+'</h2><h2><span style="font-weight: bold">Rated:</span> '+res.Rated+'</h2><h2><span style="font-weight: bold">Actors:</span> '+res.Actors+'</h2><h2 id="boxOffice"><span style="font-weight: bold">Box Office:</span> '+res.BoxOffice+'</h2><h2><span style="font-weight: bold">Director:</span> '+res.Director+'</h2><h2><span style="font-weight: bold">Awards:</span> '+res.Awards+'</h2><h2 id="plotShow">See Plot &#9660;</h2><h2 id="plotHide">Hide Plot &#9650;</h2><p id="plotInfo">'+res.Plot+'</p><a href="'+res.Website+'" target="_blank"><button id="movieSite">Visit Movie Website</button>');
-            $('#moviePoster').html('<img src="'+res.Poster+'" alt="'+res.Title+'">')
+            // $('#movieResults').html('<h1>'+res.Title+'</h1><h2><span style="font-weight: bold">Released:</span> '+res.Released+'</h2><h2><span style="font-weight: bold">Runtime:</span> '+res.Runtime+'</h2><h2><span style="font-weight: bold">Rated:</span> '+res.Rated+'</h2><h2><span style="font-weight: bold">Actors:</span> '+res.Actors+'</h2><h2 id="boxOffice"><span style="font-weight: bold">Box Office:</span> '+res.BoxOffice+'</h2><h2><span style="font-weight: bold">Director:</span> '+res.Director+'</h2><h2><span style="font-weight: bold">Awards:</span> '+res.Awards+'</h2><h2 id="plotShow">See Plot &#9660;</h2><h2 id="plotHide">Hide Plot &#9650;</h2><p id="plotInfo">'+res.Plot+'</p><a href="'+res.Website+'" target="_blank"><button id="movieSite">Visit Movie Website</button>');
+            var movieInfo = '';
+            movieInfo += '<h1>'+res.Title+'</h1>'
+            if(res.Released !== 'N/A'){
+                movieInfo += '<h2><span style="font-weight: bold">Released:</span> '+res.Released+'</h2>'
+            }
+            if(res.Runtime !== 'N/A'){
+                movieInfo += '<h2><span style="font-weight: bold">Runtime:</span> '+res.Runtime+'</h2>'
+            }
+            if(res.Rated !== 'N/A'){
+                movieInfo += '<h2><span style="font-weight: bold">Rated:</span> '+res.Rated+'</h2>'
+            }
+            if(res.Actors !== 'N/A'){
+                movieInfo += '<h2><span style="font-weight: bold">Actors:</span> '+res.Actors+'</h2>'
+            }
+            if(res.BoxOffice !== 'N/A'){
+                movieInfo += '<h2 id="boxOffice"><span style="font-weight: bold">Box Office:</span> '+res.BoxOffice+'</h2>'
+            }
+            if(res.Director !== 'N/A'){
+                movieInfo += '<h2><span style="font-weight: bold">Director:</span> '+res.Director+'</h2>'
+            }
+            if(res.Awards !== 'N/A'){
+                movieInfo += '<h2><span style="font-weight: bold">Awards:</span> '+res.Awards+'</h2>'
+            }
+            if(res.Plot !== 'N/A'){
+                movieInfo += '<h2 id="plotShow">See Plot &#9660;</h2><h2 id="plotHide">Hide Plot &#9650;</h2><p id="plotInfo">'+res.Plot+'</p>'
+            }
+            if(res.Website !== 'N/A'){
+                movieInfo += '<a href="'+res.Website+'" target="_blank"><button id="movieSite">Visit Movie Website</button>'
+            }
+            $('#movieResults').html(movieInfo);
+            if(res.Poster !== 'N/A'){
+                $('#moviePoster').html('<img src="'+res.Poster+'" alt="'+res.Title+'">')
+            }
+            else {
+                $('#moviePoster').html('<img src="http://tutaki.org.nz/wp-content/uploads/2016/04/no-image-available.png" alt="no image available">')
+            }
             }, 'json'))
         }, 'json')
         return false;
